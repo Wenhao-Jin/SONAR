@@ -1,0 +1,11 @@
+Metadata-Version: 1.0
+Name: SONAR
+Version: 0.1.0
+Summary: A program to construct SVM model and get classification scores for predicting RNA-binding proteins with given PPI network and RBP annotation list.
+Home-page: https://github.com/Wenhao-Jin/SONAR
+Author: Wenhao Jin
+Author-email: vincenzojin@gmail.com
+License: UNKNOWN
+Description: SONAR - Support  vector  machine  Obtained  from  Neighborhood  Associated  RBPs
+Keywords: RNA-binding proteins,prediction,SVM,bioinformatics
+Platform: UNKNOWN
