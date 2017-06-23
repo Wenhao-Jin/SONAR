@@ -28,6 +28,9 @@ output files will be put in the SONAR software folder. If you wanna make them
 in other folders, please specify the path of the folder in front of the
 filenames.
 
+Reference:
+Brannan KW, Jin W, Huelga SC, Banks CA, Gilmore JM, Florens L, Washburn MP, Van Nostrand EL, Pratt GA, Schwinn MK, Daniels DL, Yeo GW. SONAR Discovers RNA-Binding Proteins from Analysis of Large-Scale Protein-Protein Interactomes. Molecular Cell. 2016 Oct 20;64(2):282-93.
+
 
 Please contact me if you have problems running this program.
 Email address: wenhao.jin@u.nus.edu (Wenhao Jin)
