@@ -42,7 +42,7 @@ def main(options):
 
 #if __name__=='__main__':
 def call_main():
-    usage="""\n./dist/run_SONAR -e filename -r filename [-p num_processes] [--outfile_feature_table feature_table_filename] [-o score_table_filename] [-R num_repeats]""" 
+    usage="""\nsonar -e filename -r filename [-p num_processes] [--outfile_feature_table feature_table_filename] [-o score_table_filename] [-R num_repeats]""" 
     description="""Run SONAR with your PPI network edge list and RBP annotation list. This program will give you the RCS score table which contains the classification scores for all the proteins appearing in the PPI network. The immediate result (feature table generated in the process) will also be presented."""
     parser= OptionParser(usage=usage, description=description)
     #parser.add_option("-h", "--help", action="help")
