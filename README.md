@@ -32,7 +32,7 @@ filenames.
 Brannan KW, Jin W, Huelga SC, Banks CA, Gilmore JM, Florens L, Washburn MP, Van Nostrand EL, Pratt GA, Schwinn MK, Daniels DL, Yeo GW. SONAR Discovers RNA-Binding Proteins from Analysis of Large-Scale Protein-Protein Interactomes. Molecular Cell. 2016 Oct 20;64(2):282-93.
 
 
-Please contact me if you have problems running this program.
+Please contact me if you have any problem running this program.
 Email address: wenhao.jin@u.nus.edu (Wenhao Jin)
 
 
