@@ -11,6 +11,7 @@ import sys
 #from SONAR.generate_RCS_score_table import get_scores_for_allprot_via_cvTesting_oversampled
 from SONAR.src.get_PPI_feature_mat_NewRBPlist_v4 import get_PPI_features
 from SONAR.src.generate_RCS_score_table import get_scores_for_allprot_via_cvTesting_oversampled
+
 def main(options):
     if not options.PPI_feature_table:
         G=nx.read_edgelist(options.Edgelist)
