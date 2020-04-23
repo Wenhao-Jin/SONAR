@@ -1,13 +1,13 @@
 import pandas as pd
 import numpy as np
 from sklearn import svm
-from sklearn.cross_validation import StratifiedKFold
+from sklearn.model_selection import StratifiedKFold
 
 def get_scores_for_allprot_via_cvTesting_oversampled(Xy_df, ycol, Score_df, n_folds=10, repeats=10):
     for run in range(repeats):
         y=np.array(Xy_df[ycol])
-        cv=StratifiedKFold(y, n_folds)
-        for i, (train, test) in enumerate(cv):
+        cv=StratifiedKFold(n_splits=n_folds)
+        for train, test in list(cv.split(y, y)):
             train_set=Xy_df.iloc[train,:]
             Positive_train_set=train_set[train_set[ycol]==1]
             Negative_train_set=train_set[train_set[ycol]==0]
@@ -21,7 +21,7 @@ def get_scores_for_allprot_via_cvTesting_oversampled(Xy_df, ycol, Score_df, n_fo
             Xy_df_test_prot_names=list(Xy_df.iloc[test].index)
             clf_SVM=svm.SVC(kernel='rbf', probability=False, class_weight={1:2.0}) #"probability=False": use confidence score to describe each sample
             scores=clf_SVM.fit(X_train, y_train).decision_function(X_test)
-            score_list=zip(Xy_df_test_prot_names, scores)
+            score_list=list(zip(Xy_df_test_prot_names, scores))
 
             for prot_name, score in score_list:
                 Score_df.loc[prot_name, ['sum_of_scores','counts']]=(Score_df.loc[prot_name, 'sum_of_scores']+score, Score_df.loc[prot_name, 'counts']+1)

@@ -19,28 +19,27 @@ def main(options):
         f.close()
         prot_set=set(G.nodes())
         pool=mp.Pool(processes=options.processes)
-        print "We are extracting PPI features..."
+        print("We are extracting PPI features...")
         result=[pool.apply_async(get_PPI_features, args=(prot, G, RBP_set,)) for prot in prot_set]
         results=[p.get() for p in result]
         PPI_feature_table=pd.DataFrame(results).set_index('Protein_name')
         PPI_feature_table.to_csv(options.PPI_feature_table_out, index=True, sep='\t')
-        print "Feature table, done!"
+        print("Feature table, done!")
     else:
         PPI_feature_table=pd.read_table(options.PPI_feature_table, index_col=0)
-        print "Feature table loaded!"
+        print("Feature table loaded!")
     
     Xy_df=PPI_feature_table[['primary_RBP_ratio', 'secondary_RBP_ratio', 'tertiary_RBP_ratio', 'RBP_flag']]
     Score_df=pd.DataFrame(index=Xy_df.index)
     Score_df['sum_of_scores']=0
     Score_df['counts']=0
     Score_df['RBP_flag']=Xy_df['RBP_flag']
-    print "We are constructing SONAR and calculate RCS scores..."
+    print("We are constructing SONAR and calculate RCS scores...")
     avg_Score_df=get_scores_for_allprot_via_cvTesting_oversampled(Xy_df, 'RBP_flag', Score_df)
     avg_Score_df.to_csv(options.outfile, sep='\t', index=True)
-    print "Score table, done!"
-    print "The program has finished successfully."
+    print("Score table, done!")
+    print("The program has finished successfully.")
 
-#if __name__=='__main__':
 def call_main():
     usage="""\nsonar -e filename -r filename [-p num_processes] [--outfile_feature_table feature_table_filename] [-o score_table_filename] [-R num_repeats]""" 
     description="""Run SONAR with your PPI network edge list and RBP annotation list. This program will give you the RCS score table which contains the classification scores for all the proteins appearing in the PPI network. The immediate result (feature table generated in the process) will also be presented."""

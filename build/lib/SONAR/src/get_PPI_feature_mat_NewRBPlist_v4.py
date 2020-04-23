@@ -10,20 +10,20 @@ def replace_zeros(d):
 
 def get_PPI_features(prot, G, RBP_set):
     #get first-level PPI features
-    NBhood1_total=G.neighbors(prot)
+    NBhood1_total=list(G.neighbors(prot))
     NBhood2_total=[]
     NBhood3_total=[]
     for nb1 in NBhood1_total:
-        NBhood2=G.neighbors(nb1)
+        NBhood2=list(G.neighbors(nb1))
         NBhood2.remove(prot)
         NBhood2_total.extend(NBhood2)
         for nb2 in NBhood2:
-            NBhood3=G.neighbors(nb2)
+            NBhood3=list(G.neighbors(nb2))
             NBhood3.remove(nb1)
             NBhood3_total.extend(NBhood3)
     
-    NBhood2_total=filter(lambda x: x!=prot ,NBhood2_total)
-    NBhood3_total=filter(lambda x: x!=prot ,NBhood3_total)
+    NBhood2_total=list(filter(lambda x: x!=prot ,NBhood2_total))
+    NBhood3_total=list(filter(lambda x: x!=prot ,NBhood3_total))
     #print NBhood2_total
     #print NBhood3_total
     NBhood1_RBP = [prot1 for prot1 in NBhood1_total if prot1 in RBP_set]
@@ -45,20 +45,20 @@ def get_PPI_features2(G, RBP_set):
     #get first-level PPI features
     results=[]
     for prot in G.nodes_iter():
-        NBhood1_total=G.neighbors(prot)
+        NBhood1_total=list(G.neighbors(prot))
         NBhood2_total=[]
         NBhood3_total=[]
         for nb1 in NBhood1_total:
-            NBhood2=G.neighbors(nb1)
+            NBhood2=list(G.neighbors(nb1))
             NBhood2.remove(prot)
             NBhood2_total.extend(NBhood2)
             for nb2 in NBhood2:
-                NBhood3=G.neighbors(nb2)
+                NBhood3=list(G.neighbors(nb2))
                 NBhood3.remove(nb1)
                 NBhood3_total.extend(NBhood3)
 
-        NBhood2_total=filter(lambda x: x!=prot ,NBhood2_total)
-        NBhood3_total=filter(lambda x: x!=prot ,NBhood3_total)
+        NBhood2_total=list(filter(lambda x: x!=prot ,NBhood2_total))
+        NBhood3_total=list(filter(lambda x: x!=prot ,NBhood3_total))
         #print NBhood2_total
         #print NBhood3_total
         NBhood1_RBP = [prot1 for prot1 in NBhood1_total if prot1 in RBP_set]

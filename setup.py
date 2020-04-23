@@ -14,7 +14,6 @@ setup(
                         'pandas >= 0.18.1',
                         'numpy >= 1.11.1',
                         'networkx >= 1.9.1',
-                        'multiprocessing >= 2.6.2.1',
                         'argparse >= 1.1',
                         'scikit-learn >= 0.17'
                         ],
