@@ -13,7 +13,7 @@ setup(
     install_requires = ['setuptools', 
                         'pandas >= 0.18.1',
                         'numpy >= 1.11.1',
-                        'networkx >= 1.9.1',
+                        'networkx >= 2.4',
                         'argparse >= 1.1',
                         'scikit-learn >= 0.17'
                         ],

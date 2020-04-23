@@ -14,6 +14,7 @@ from SONAR.src.generate_RCS_score_table import get_scores_for_allprot_via_cvTest
 def main(options):
     if not options.PPI_feature_table:
         G=nx.read_edgelist(options.Edgelist)
+        G.remove_edges_from(nx.selfloop_edges(G))
         f=open(options.RBPlist)
         RBP_set=set(f.read().split('\n'))
         f.close()
